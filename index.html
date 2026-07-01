@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial - Tester1</title>
+    <title>Roleta de Dinheiro 💰</title>
     <style>
         * {
             margin: 0;
@@ -12,71 +12,318 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
             min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #ffd700;
+            margin-bottom: 30px;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .wheel-container {
+            position: relative;
+            margin: 30px 0;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .container {
-            text-align: center;
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            max-width: 500px;
+        .wheel {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #ff6b6b 0deg 30deg,
+                #4ecdc4 30deg 60deg,
+                #ffd700 60deg 90deg,
+                #95e1d3 90deg 120deg,
+                #f38181 120deg 150deg,
+                #aa96da 150deg 180deg,
+                #fcbad3 180deg 210deg,
+                #ffffd2 210deg 240deg,
+                #a8edea 240deg 270deg,
+                #fed6e3 270deg 300deg,
+                #ff9ff3 300deg 330deg,
+                #54a0ff 330deg 360deg
+            );
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 2px 5px rgba(255, 255, 255, 0.2);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.1s linear;
         }
 
-        h1 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 2.5em;
+        .wheel.spin {
+            animation: spinWheel 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        p {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 1.1em;
+        @keyframes spinWheel {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(1800deg);
+            }
+        }
+
+        .wheel-center {
+            width: 60px;
+            height: 60px;
+            background: #ffd700;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            z-index: 10;
+        }
+
+        .wheel-pointer {
+            position: absolute;
+            top: -15px;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 30px solid #ffd700;
+            z-index: 20;
+            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+        }
+
+        .button-container {
+            margin-top: 30px;
         }
 
         button {
-            background: #667eea;
-            color: white;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #1e3c72;
             border: none;
-            padding: 12px 30px;
-            font-size: 1em;
-            border-radius: 5px;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 50px;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
         }
 
-        button:hover {
-            background: #764ba2;
+        button:hover:not(:disabled) {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.6);
         }
 
-        .footer {
+        button:active:not(:disabled) {
+            transform: scale(0.98);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 1.5em;
+            color: #ffd700;
+            font-weight: bold;
+            min-height: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .money-emoji {
+            font-size: 2em;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .values {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
             margin-top: 20px;
-            color: #999;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .value-item {
+            color: #fff;
             font-size: 0.9em;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🎉 Bem-vindo!</h1>
-        <p>Este é o seu primeiro projeto no repositório Tester1</p>
-        <button onclick="mostrarMensagem()">Clique Aqui</button>
-        <div class="footer">
-            <p>Criado com ❤️ pelo GitHub Copilot</p>
+        <h1>💰 ROLETA DE DINHEIRO 💰</h1>
+        
+        <div class="wheel-container">
+            <div class="wheel-pointer"></div>
+            <div class="wheel" id="wheel"></div>
+        </div>
+
+        <div class="button-container">
+            <button id="spinBtn" onclick="girarRoleta()">GIRAR A ROLETA</button>
+        </div>
+
+        <div class="result" id="result"></div>
+
+        <div class="values">
+            <div class="value-item">💵 $100</div>
+            <div class="value-item">💴 $500</div>
+            <div class="value-item">💶 $1.000</div>
+            <div class="value-item">💷 $5.000</div>
+            <div class="value-item">💸 $10.000</div>
+            <div class="value-item">💰 $50.000</div>
+            <div class="value-item">🏆 JACKPOT</div>
+            <div class="value-item">🎁 PRÊMIO</div>
+            <div class="value-item">⭐ ESPECIAL</div>
+            <div class="value-item">🎪 SORTE</div>
+            <div class="value-item">🌟 BONUS</div>
+            <div class="value-item">🎊 TOP!</div>
         </div>
     </div>
 
     <script>
-        function mostrarMensagem() {
-            alert('Parabéns! Seu código HTML está funcionando! 🚀');
+        const premios = [
+            '💵 $100',
+            '💴 $500',
+            '💶 $1.000',
+            '💷 $5.000',
+            '💸 $10.000',
+            '💰 $50.000',
+            '🏆 JACKPOT',
+            '🎁 PRÊMIO',
+            '⭐ ESPECIAL',
+            '🎪 SORTE',
+            '🌟 BONUS',
+            '🎊 TOP!'
+        ];
+
+        let girando = false;
+
+        function criarAudioDinheiro() {
+            // Criar som de dinheiro usando Web Audio API
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const now = audioContext.currentTime;
+
+            // Som 1: Som agudo de moeda
+            const osc1 = audioContext.createOscillator();
+            const gain1 = audioContext.createGain();
+            osc1.connect(gain1);
+            gain1.connect(audioContext.destination);
+            osc1.frequency.setValueAtTime(800, now);
+            osc1.frequency.exponentialRampToValueAtTime(600, now + 0.1);
+            gain1.gain.setValueAtTime(0.3, now);
+            gain1.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+            osc1.start(now);
+            osc1.stop(now + 0.1);
+
+            // Som 2: Som médio
+            const osc2 = audioContext.createOscillator();
+            const gain2 = audioContext.createGain();
+            osc2.connect(gain2);
+            gain2.connect(audioContext.destination);
+            osc2.frequency.setValueAtTime(600, now + 0.15);
+            osc2.frequency.exponentialRampToValueAtTime(400, now + 0.25);
+            gain2.gain.setValueAtTime(0.3, now + 0.15);
+            gain2.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+            osc2.start(now + 0.15);
+            osc2.stop(now + 0.25);
+
+            // Som 3: Som grave de aprovação
+            const osc3 = audioContext.createOscillator();
+            const gain3 = audioContext.createGain();
+            osc3.connect(gain3);
+            gain3.connect(audioContext.destination);
+            osc3.frequency.setValueAtTime(300, now + 0.3);
+            osc3.frequency.exponentialRampToValueAtTime(200, now + 0.5);
+            gain3.gain.setValueAtTime(0.3, now + 0.3);
+            gain3.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
+            osc3.start(now + 0.3);
+            osc3.stop(now + 0.5);
         }
+
+        function girarRoleta() {
+            if (girando) return;
+
+            girando = true;
+            const botao = document.getElementById('spinBtn');
+            const resultado = document.getElementById('result');
+            const wheel = document.getElementById('wheel');
+
+            botao.disabled = true;
+            resultado.textContent = 'Girando...';
+
+            // Remove a animação anterior
+            wheel.classList.remove('spin');
+            // Trigger reflow para reiniciar a animação
+            void wheel.offsetWidth;
+            // Adiciona a animação de novo
+            wheel.classList.add('spin');
+
+            // Após 4 segundos (duração da animação), mostra o resultado
+            setTimeout(() => {
+                const indiceAleatorio = Math.floor(Math.random() * premios.length);
+                const premiador = premios[indiceAleatorio];
+
+                resultado.textContent = `🎉 ${premiador} 🎉`;
+
+                // Toca o som de dinheiro
+                try {
+                    criarAudioDinheiro();
+                } catch (e) {
+                    console.log('Áudio não disponível');
+                }
+
+                // Efeito de vibração se disponível
+                if (navigator.vibrate) {
+                    navigator.vibrate([100, 50, 100, 50, 200]);
+                }
+
+                girando = false;
+                botao.disabled = false;
+            }, 4000);
+        }
+
+        // Permitir girar com Enter
+        document.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !girando) {
+                girarRoleta();
+            }
+        });
     </script>
 </body>
 </html>
