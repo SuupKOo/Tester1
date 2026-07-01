@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - La Maison</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="logo">
+                    <i class="fas fa-utensils"></i>
+                    <span>La Maison</span>
+                </div>
+                
+                <div class="nav-center">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="cardapio.html" class="nav-link">Cardápio</a>
+                    <a href="sobre.html" class="nav-link active">Sobre</a>
+                    <a href="contato.html" class="nav-link">Contato</a>
+                </div>
+
+                <div class="nav-right">
+                    <button class="theme-toggle" id="themeToggle" title="Alternar tema">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <a href="favoritos.html" class="nav-icon" title="Favoritos">
+                        <i class="far fa-heart"></i>
+                        <span class="badge" id="favBadge">0</span>
+                    </a>
+                    
+                    <a href="carrinho.html" class="nav-icon cart-icon" title="Carrinho">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge" id="cartBadge">0</span>
+                    </a>
+                    
+                    <button class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-secundaria">
+        <h1>Sobre La Maison</h1>
+        <p>Conheça a história por trás de nosso sucesso</p>
+    </section>
+
+    <!-- Sobre -->
+    <section class="sobre-completa">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2>Nossa Missão</h2>
+                    <p>La Maison foi fundada em 2010 com a missão de oferecer uma experiência gastronômica única. Acreditamos que a gastronomia vai além de apenas alimentar; é sobre criar memórias, celebrar a vida e unir pessoas através da comida.</p>
+                    <p>Nossa equipe dedicada trabalha diariamente para garantir que cada prato seja uma obra de arte, preparado com os melhores ingredientes e técnicas culinárias de ponta.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/400x500/C9A227/0D0D0D?text=Chef" alt="Chef" loading="lazy">
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>14+</h3>
+                    <p>Anos de Experiência</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Pratos no Cardápio</p>
+                </div>
+                <div class="stat-item">
+                    <h3>10K+</h3>
+                    <p>Clientes Satisfeitos</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4.9★</h3>
+                    <p>Avaliação</p>
+                </div>
+            </div>
+
+            <div class="equipe">
+                <h2>Nossa Equipe</h2>
+                <div class="equipe-grid" id="equipeGrid">
+                    <!-- Gerado dinamicamente -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>La Maison</h3>
+                    <p>Experiência gastronômica premium em cada prato.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Informações</h3>
+                    <ul>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Horário de Funcionamento</h3>
+                    <p><strong>Segunda a Quinta:</strong> 11:00 - 23:00</p>
+                    <p><strong>Sexta e Sábado:</strong> 11:00 - 00:00</p>
+                    <p><strong>Domingo:</strong> 12:00 - 22:00</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-phone"></i> (11) 3000-0000</p>
+                    <p><i class="fas fa-envelope"></i> contato@lamaison.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 La Maison. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notificação Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Botão Voltar ao Topo -->
+    <button class="btn-top" id="btnTop" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/5511999999999" class="whatsapp-btn" target="_blank" title="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="js/script.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/carrinho.js"></script>
+    <script src="js/tema.js"></script>
+</body>
+</html>

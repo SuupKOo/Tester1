@@ -3,19 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurante Premium - La Maison</title>
+    <title>Favoritos - La Maison</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loader"></div>
-        <p>La Maison</p>
-    </div>
-
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="container">
@@ -26,7 +20,7 @@
                 </div>
                 
                 <div class="nav-center">
-                    <a href="index.html" class="nav-link active">Home</a>
+                    <a href="index.html" class="nav-link">Home</a>
                     <a href="cardapio.html" class="nav-link">Cardápio</a>
                     <a href="sobre.html" class="nav-link">Sobre</a>
                     <a href="contato.html" class="nav-link">Contato</a>
@@ -38,7 +32,7 @@
                     </button>
                     
                     <a href="favoritos.html" class="nav-icon" title="Favoritos">
-                        <i class="far fa-heart"></i>
+                        <i class="fas fa-heart"></i>
                         <span class="badge" id="favBadge">0</span>
                     </a>
                     
@@ -57,93 +51,24 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title fade-in">La Maison</h1>
-            <p class="hero-subtitle fade-in">Experiência Gastronômica Premium</p>
-            <div class="hero-buttons fade-in">
+    <!-- Favoritos Vazio -->
+    <section class="favoritos-vazio" id="favoritosVazio">
+        <div class="container">
+            <div class="empty-state">
+                <i class="fas fa-heart"></i>
+                <h2>Você não tem favoritos</h2>
+                <p>Explore nosso cardápio e marque seus pratos favoritos</p>
                 <a href="cardapio.html" class="btn btn-primary">Ver Cardápio</a>
-                <button class="btn btn-secondary" id="reservarBtn">Reservar Mesa</button>
-            </div>
-        </div>
-        <div class="hero-overlay"></div>
-    </section>
-
-    <!-- Nossa História -->
-    <section class="historia" id="historia">
-        <div class="container">
-            <h2 class="section-title">Nossa História</h2>
-            <div class="historia-content">
-                <div class="historia-text slide-up">
-                    <p>La Maison foi fundada em 2010 com a missão de oferecer uma experiência gastronômica única e memorável. Nossa equipe de chefs renomados trabalha diariamente para trazer os melhores sabores do mundo para sua mesa.</p>
-                    <p>Com mais de uma década de excelência, consolidamos nossa reputação como um dos melhores restaurantes da região, oferecendo não apenas comida deliciosa, mas uma verdadeira experiência sensorial.</p>
-                </div>
-                <div class="historia-image slide-up">
-                    <img src="https://via.placeholder.com/500x400/C9A227/0D0D0D?text=Restaurante" alt="La Maison" loading="lazy">
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Pratos em Destaque -->
-    <section class="destaque" id="destaque">
+    <!-- Favoritos com Itens -->
+    <section class="favoritos-section" id="favoritosSection" style="display: none;">
         <div class="container">
-            <h2 class="section-title">Pratos em Destaque</h2>
-            <div class="pratos-grid" id="pratosDestaque">
-                <!-- Gerado dinamicamente pelo JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Especiais da Casa -->
-    <section class="especiais" id="especiais">
-        <div class="container">
-            <h2 class="section-title">Especiais da Casa</h2>
-            <div class="especiais-grid" id="especiais-grid">
-                <!-- Gerado dinamicamente pelo JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Avaliações -->
-    <section class="avaliacoes" id="avaliacoes">
-        <div class="container">
-            <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
-            <div class="avaliacoes-grid" id="avaliacoes-grid">
-                <!-- Gerado dinamicamente pelo JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Galeria -->
-    <section class="galeria" id="galeria">
-        <div class="container">
-            <h2 class="section-title">Galeria</h2>
-            <div class="galeria-grid" id="galeria-grid">
-                <!-- Gerado dinamicamente pelo JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="newsletter">
-        <div class="container">
-            <h2>Receba Nossas Novidades</h2>
-            <p>Inscreva-se para receber ofertas exclusivas e novidades sobre nossos pratos.</p>
-            <form class="newsletter-form" id="newsletterForm">
-                <input type="email" placeholder="Seu email" required>
-                <button type="submit" class="btn btn-primary">Inscrever</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq" id="faq">
-        <div class="container">
-            <h2 class="section-title">Perguntas Frequentes</h2>
-            <div class="faq-container" id="faqContainer">
-                <!-- Gerado dinamicamente pelo JavaScript -->
+            <h1>Meus Favoritos</h1>
+            <div class="favoritos-grid" id="favoritosGrid">
+                <!-- Gerado dinamicamente -->
             </div>
         </div>
     </section>
@@ -194,32 +119,6 @@
         </div>
     </footer>
 
-    <!-- Modal de Reserva -->
-    <div class="modal" id="reservaModal">
-        <div class="modal-content">
-            <span class="modal-close" id="closeReserva">&times;</span>
-            <h2>Reservar Mesa</h2>
-            <form id="reservaForm">
-                <input type="text" placeholder="Seu Nome" required>
-                <input type="tel" placeholder="Telefone" required>
-                <input type="date" required>
-                <input type="time" required>
-                <select required>
-                    <option value="">Quantidade de Pessoas</option>
-                    <option value="1">1 Pessoa</option>
-                    <option value="2">2 Pessoas</option>
-                    <option value="3">3 Pessoas</option>
-                    <option value="4">4 Pessoas</option>
-                    <option value="5">5 Pessoas</option>
-                    <option value="6">6 Pessoas</option>
-                    <option value="7">7 Pessoas</option>
-                    <option value="8">8+ Pessoas</option>
-                </select>
-                <button type="submit" class="btn btn-primary">Confirmar Reserva</button>
-            </form>
-        </div>
-    </div>
-
     <!-- Modal de Produto -->
     <div class="modal" id="produtoModal">
         <div class="modal-content modal-grande">
@@ -246,7 +145,6 @@
     <script src="js/script.js"></script>
     <script src="js/menu.js"></script>
     <script src="js/carrinho.js"></script>
-    <script src="js/pesquisa.js"></script>
     <script src="js/tema.js"></script>
 </body>
 </html>
